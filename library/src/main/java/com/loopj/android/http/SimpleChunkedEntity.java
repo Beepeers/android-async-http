@@ -99,11 +99,9 @@ class SimpleChunkedEntity implements HttpEntity {
     }
 
     @Override
-    public void writeTo(OutputStream outstream) throws IOException {
+    public void writeTo(final OutputStream outstream) throws IOException {
         bytesWritten = 0;
         totalSize = (int) getContentLength();
-
-        outstream = new ChunkedOutputStream(outstream);
 
         FileInputStream inputStream = new FileInputStream(file.file);
         final byte[] tmp = new byte[4096];
